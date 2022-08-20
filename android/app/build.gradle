@@ -27,7 +27,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion flutter.compileSdkVersion
-    ndkPath = '/Users/abc/Library/Android/sdk/ndk8215888';
+    // ndkPath = '/Users/abc/Library/Android/sdk/ndk8215888';
+    ndkPath = 'C:/Users/ilham/AppData/Local/Android/Sdk/ndk/24.0.8215888';
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -48,8 +49,8 @@ android {
         applicationId "com.ahp_maya"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 23
+        targetSdkVersion 32
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

@@ -15,7 +15,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigator.pushNamed(context, router);
+        Navigator.pushNamed(context, router);
       },
       child: Ink(
         child: Padding(

@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -124,14 +124,16 @@ class _HomePageState extends State<HomePage> {
                                       height: 8,
                                     ),
                                     const Text(
-                                      'testttttt',
-                                      style: TextStyle(fontSize: 14),
+                                      'aplikasi pengambilan keputusan siswa terbaik',
+                                      style: TextStyle(fontSize: 12),
                                     ),
                                     const SizedBox(
                                       height: 12,
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        
+                                      },
                                       child: Container(
                                         padding: const EdgeInsets.all(8.0),
                                         decoration: BoxDecoration(
@@ -141,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         child: const Center(
                                             child: Text(
-                                          'Menuju xxxx',
+                                          'Mulai Perhitungan',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xffF9F9F9),
@@ -187,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                                 CategoryCard(
                                     iconImagePath: 'assets/icons/user.png',
                                     categoryName: 'Daftar Murid',
-                                    router: '/santri'),
+                                    router: '/murid'),
                               ],
                             ),
                           )),
@@ -204,16 +206,16 @@ class _HomePageState extends State<HomePage> {
                           children: const [
                             CategoryCard(
                                 iconImagePath: 'assets/icons/finance.png',
-                                categoryName: 'Penilaian',
-                                router: '/store'),
+                                categoryName: 'Master Murid\n(alternatif)',
+                                router: '/addMurid'),
                             CategoryCard(
                                 iconImagePath: 'assets/icons/finance_2.png',
-                                categoryName: 'Daftar\nKriteria',
-                                router: '/transaksiHistory'),
+                                categoryName: 'Master\nKriteria',
+                                router: '/kriteria'),
                             CategoryCard(
                                 iconImagePath: 'assets/icons/tomb.png',
-                                categoryName: 'Hasil Akhir',
-                                router: '/maklumat'),
+                                categoryName: 'Master nilai\nAwal',
+                                router: '/nilaiAwal'),
                           ],
                         ),
                       ),

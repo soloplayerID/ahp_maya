@@ -49,6 +49,9 @@ dependencies:
   fluttertoast: ^8.0.9
   line_icons: ^2.0.1
   ionicons: ^0.1.2
+  webview_flutter: ^3.0.4
+  auto_size_text: ^3.0.0
+  dropdown_search: ^3.0.1
 
 dev_dependencies:
   flutter_test:
