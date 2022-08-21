@@ -71,13 +71,12 @@ class _MuridListScreenState extends State<MuridListScreen>
                             child: const Icon(LineIcons.arrowLeft,
                                 color: Colors.white, size: 30),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/addKriteria');
-                            },
-                            child: const Icon(LineIcons.plus,
-                                color: Colors.white, size: 30),
-                          ),
+                          const Text(
+                            'daftar murid',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )
                         ],
                       ),
                     ),
@@ -90,7 +89,8 @@ class _MuridListScreenState extends State<MuridListScreen>
                                     style: GoogleFonts.poppins(
                                       fontStyle: FontStyle.italic,
                                       textStyle: const TextStyle(
-                                          fontSize: 14, color: Color(0xff1f1f1f)),
+                                          fontSize: 14,
+                                          color: Color(0xff1f1f1f)),
                                     )),
                               ))
                           : Expanded(
@@ -119,15 +119,15 @@ class _MuridListScreenState extends State<MuridListScreen>
                                               shrinkWrap: true,
                                               physics:
                                                   const NeverScrollableScrollPhysics(),
-                                              itemBuilder: (BuildContext context,
-                                                      int itemIndex) =>
-                                                  InkWell(
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                          int itemIndex) =>
+                                                      InkWell(
                                                 onTap: () {},
                                                 child: Container(
                                                   height: 120,
-                                                  margin:
-                                                      const EdgeInsets.symmetric(
-                                                          vertical: 5.0),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(vertical: 5.0),
                                                   padding:
                                                       const EdgeInsets.all(10),
                                                   decoration: BoxDecoration(
@@ -155,8 +155,8 @@ class _MuridListScreenState extends State<MuridListScreen>
                                                       ),
                                                       Container(
                                                         padding:
-                                                            const EdgeInsets.only(
-                                                                top: 10),
+                                                            const EdgeInsets
+                                                                .only(top: 10),
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -170,7 +170,8 @@ class _MuridListScreenState extends State<MuridListScreen>
                                                               style: GoogleFonts
                                                                   .poppins(
                                                                 textStyle: const TextStyle(
-                                                                    fontSize: 18,
+                                                                    fontSize:
+                                                                        18,
                                                                     color: Color(
                                                                         0xff1f1f1f)),
                                                               ),

@@ -187,9 +187,7 @@ class _NilaiAwalListScreenState extends State<NilaiAwalListScreen>
                                                               Row(
                                                                 children: [
                                                                   Text(
-                                                                    'Nilai: ${_nilaiAwalListModel
-                                                                            .nilaiAwal[itemIndex]
-                                                                            .nilai}, keterangan: ${_nilaiAwalListModel.nilaiAwal[itemIndex].keterangan}',
+                                                                    'Nilai: ${_nilaiAwalListModel.nilaiAwal[itemIndex].nilai},\nketerangan: ${_nilaiAwalListModel.nilaiAwal[itemIndex].keterangan}',
                                                                     style: GoogleFonts
                                                                         .poppins(
                                                                       textStyle: const TextStyle(

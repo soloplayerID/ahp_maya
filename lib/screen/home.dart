@@ -132,7 +132,8 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        
+                                        Navigator.pushNamed(
+                                            context, '/perhitunganKriteria');
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(8.0),
