@@ -8,6 +8,7 @@ import '../screen/fragment/murid/murid_add.dart';
 import '../screen/fragment/nilai_awal/nilaiAwal_add.dart';
 import '../screen/login.dart';
 import '../screen/murid.dart';
+import '../screen/perhitungan.dart';
 import '../screen/perhitungan_kriteria.dart';
 
 final routes = {
@@ -19,6 +20,7 @@ final routes = {
   '/addKriteria': (BuildContext context) => const AddKriteriaScreen(),
   '/nilaiAwal': (BuildContext context) => const NilaiAwalListScreen(),
   '/addNilaiAwal': (BuildContext context) => const AddNilaiAwalScreen(),
+  '/perhitungan': (BuildContext context) => const MulaiPerhitunganScreen(),
   '/perhitunganKriteria': (BuildContext context) =>
       const PerhitunganKriteriaScreen(),
 };

@@ -30,6 +30,7 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
           alignment: Alignment.center,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
+          color: const Color.fromARGB(255, 255, 255, 255),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -41,8 +42,7 @@ class _LoadingState extends State<Loading> with SingleTickerProviderStateMixin {
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ],
-          ),
-          color: const Color(0XFFA0D995)),
+          )),
     );
   }
 }
