@@ -1,36 +1,37 @@
-import 'package:ahp_maya/src/model/perhitungan_kriteria_model.dart';
-import 'package:ahp_maya/src/presenter/perhitungan_kriteria_presenter.dart';
+import 'package:ahp_maya/screen/fragment/loading.dart';
+import 'package:ahp_maya/src/model/perhitungan_alternatif_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../src/state/perhitungan_Kriteria_state.dart';
-import 'fragment/loading.dart';
+import '../src/presenter/perhitungan_alternatif_presenter.dart';
+import '../src/state/perhitungan_alternatif_state.dart';
 import 'fragment/perhitungan/selectBobot.dart';
 
-class PerhitunganKriteriaScreen extends StatefulWidget {
-  const PerhitunganKriteriaScreen({Key? key}) : super(key: key);
+class PerhitunganAlternatifScreen extends StatefulWidget {
+  const PerhitunganAlternatifScreen({Key? key}) : super(key: key);
 
   @override
-  State<PerhitunganKriteriaScreen> createState() =>
-      PerhitunganKriteriaScreenState();
+  State<PerhitunganAlternatifScreen> createState() =>
+      _PerhitunganAlternatifScreenState();
 }
 
-class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
-    implements PerhitunganKriteriaState {
-  late PerhitunganKriteriaModel _perhitunganKriteriaModel;
-  late PerhitunganKriteriaPresenter _perhitunganKriteriaPresenter;
+class _PerhitunganAlternatifScreenState
+    extends State<PerhitunganAlternatifScreen>
+    implements PerhitunganAlternatifState {
+  late PerhitunganAlternatifModel _perhitunganAlternatifModel;
+  late PerhitunganAlternatifPresenter _perhitunganAlternatifPresenter;
 
-  PerhitunganKriteriaScreenState() {
-    _perhitunganKriteriaPresenter = PerhitunganKriteriaPresenter();
+  _PerhitunganAlternatifScreenState() {
+    _perhitunganAlternatifPresenter = PerhitunganAlternatifPresenter();
   }
 
   @override
   void initState() {
-    _perhitunganKriteriaPresenter.view = this;
+    _perhitunganAlternatifPresenter.view = this;
     super.initState();
-    _perhitunganKriteriaPresenter.getData();
+    _perhitunganAlternatifPresenter.getData();
   }
 
   @override
@@ -40,7 +41,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
 
   @override
   Widget build(BuildContext context) {
-    return _perhitunganKriteriaModel.isloading == true
+    return _perhitunganAlternatifModel.isloading == true
         ? const Loading()
         : Scaffold(
             body: Container(
@@ -64,7 +65,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                               color: Colors.white, size: 30),
                         ),
                         const Text(
-                          'Analisa Kriteria',
+                          'Analisa Alternatif',
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         )
@@ -84,7 +85,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                             children: [
                               const Center(
                                 child: Text(
-                                  "Kriteria Pertama",
+                                  "Alternatif Pertama",
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 0, 0, 0)),
                                 ),
@@ -109,7 +110,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                                         BorderRadius.all(Radius.circular(10))),
                                 child: const Center(
                                   child: Text(
-                                    "Penampilan",
+                                    "SUYANI",
                                     style: TextStyle(
                                         color: Color.fromARGB(255, 0, 0, 0),
                                         fontWeight: FontWeight.bold),
@@ -140,7 +141,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                                         color: Color(0xff2D8EFF),
                                         size: 18,
                                       ),
-                                      hintText: "pilih kriteria",
+                                      hintText: "pilih Penilaian",
                                       border: InputBorder.none,
                                       errorStyle: TextStyle(
                                           color: Colors.red, fontSize: 9),
@@ -149,8 +150,8 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                                           color: Color(0xff2D8EFF),
                                           fontSize: 12)),
                                   onTap: (() => {selectJawaban()}),
-                                  controller:
-                                      _perhitunganKriteriaModel.jawabanSelected,
+                                  controller: _perhitunganAlternatifModel
+                                      .jawabanSelected,
                                   readOnly: true,
                                 ),
                               ),
@@ -171,7 +172,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
                                         BorderRadius.all(Radius.circular(10))),
                                 child: const Center(
                                   child: Text(
-                                    "Sikap",
+                                    "PUSPA",
                                     style: TextStyle(
                                         color: Color.fromARGB(255, 0, 0, 0),
                                         fontWeight: FontWeight.bold),
@@ -229,12 +230,12 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
         MaterialPageRoute(
           builder: (context) => SelectBobot(
             key: const Key("1"),
-            bobotResponse: _perhitunganKriteriaModel.bobotResponse,
+            bobotResponse: _perhitunganAlternatifModel.bobotResponse,
           ),
         )).then((value) {
       setState(() {
-        _perhitunganKriteriaModel.jawabanSelected.text =
-            _perhitunganKriteriaModel.bobotResponse.data![value].nama
+        _perhitunganAlternatifModel.jawabanSelected.text =
+            _perhitunganAlternatifModel.bobotResponse.data![value].nama
                 .toString();
       });
     });
@@ -254,7 +255,6 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
 
   @override
   void onSuccess(String success) {
-    print(_perhitunganKriteriaModel.isloading);
     Fluttertoast.showToast(
         msg: success,
         toastLength: Toast.LENGTH_SHORT,
@@ -266,9 +266,9 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
   }
 
   @override
-  void refreshData(PerhitunganKriteriaModel perhitunganKriteriaModel) {
+  void refreshData(PerhitunganAlternatifModel perhitunganAlternatifModel) {
     setState(() {
-      _perhitunganKriteriaModel = perhitunganKriteriaModel;
+      _perhitunganAlternatifModel = perhitunganAlternatifModel;
     });
   }
 }

@@ -9,6 +9,7 @@ import '../screen/fragment/nilai_awal/nilaiAwal_add.dart';
 import '../screen/login.dart';
 import '../screen/murid.dart';
 import '../screen/perhitungan.dart';
+import '../screen/perhitungan_alternatif.dart';
 import '../screen/perhitungan_kriteria.dart';
 
 final routes = {
@@ -23,4 +24,6 @@ final routes = {
   '/perhitungan': (BuildContext context) => const MulaiPerhitunganScreen(),
   '/perhitunganKriteria': (BuildContext context) =>
       const PerhitunganKriteriaScreen(),
+  '/perhitunganAlternatif': (BuildContext context) =>
+      const PerhitunganAlternatifScreen(),
 };

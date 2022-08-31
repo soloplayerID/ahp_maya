@@ -1,17 +1,18 @@
-import 'package:ahp_maya/src/response/bobot_response.dart';
 import 'package:flutter/material.dart';
 
-class Bobot {
+import '../response/bobot_response.dart';
+
+class Murid {
   String bobot;
   String nama;
-  Bobot({required this.bobot, required this.nama});
+  Murid({required this.bobot, required this.nama});
 }
 
-class PerhitunganKriteriaModel {
+class PerhitunganAlternatifModel {
   int idUser = 0;
   bool isloading = false;
   bool isSuccess = false;
   final TextEditingController jawabanSelected = TextEditingController();
-  List<Bobot> bobot = <Bobot>[];
+  List<Murid> murid = <Murid>[];
   BobotResponse bobotResponse = BobotResponse();
 }
