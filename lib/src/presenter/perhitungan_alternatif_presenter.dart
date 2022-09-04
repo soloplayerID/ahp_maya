@@ -60,5 +60,7 @@ class PerhitunganAlternatifPresenter
   }
 
   @override
-  void submit() {}
+  void submit() {
+    _perhitunganAlternatifState.onFinish('berhasil');
+  }
 }

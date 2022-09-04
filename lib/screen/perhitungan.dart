@@ -1,6 +1,7 @@
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -163,7 +164,14 @@ class _MulaiPerhitunganScreenState extends State<MulaiPerhitunganScreen> {
                       InkWell(
                         splashColor: const Color(0xff7474BF),
                         onTap: () {
-                          Navigator.pushNamed(context, '');
+                          Fluttertoast.showToast(
+                              msg: "sedang dikerjakan",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 2,
+                              backgroundColor: Colors.amber,
+                              textColor: Colors.white,
+                              fontSize: 15);
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 50.0),
