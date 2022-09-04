@@ -41,7 +41,8 @@ class _PerhitunganAlternatifScreenState
 
   @override
   Widget build(BuildContext context) {
-    return _perhitunganAlternatifModel.isloading == true
+    return _perhitunganAlternatifModel.isloading == true ||
+            _perhitunganAlternatifModel.alternatifJawaban.data == null
         ? const Loading()
         : Scaffold(
             body: Container(
@@ -64,9 +65,9 @@ class _PerhitunganAlternatifScreenState
                           child: const Icon(LineIcons.arrowLeft,
                               color: Colors.white, size: 30),
                         ),
-                        const Text(
-                          'Analisa Alternatif',
-                          style: TextStyle(
+                        Text(
+                          'Analisa Alternatif ${_perhitunganAlternatifModel.currentIndex + 1}/${_perhitunganAlternatifModel.alternatifJawaban.data!.length}',
+                          style: const TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -108,10 +109,10 @@ class _PerhitunganAlternatifScreenState
                                     color: Color.fromARGB(255, 185, 187, 186),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10))),
-                                child: const Center(
+                                child: Center(
                                   child: Text(
-                                    "SUYANI",
-                                    style: TextStyle(
+                                    "${_perhitunganAlternatifModel.alternatifJawaban.data![_perhitunganAlternatifModel.currentIndex].kriteriaPertama}",
+                                    style: const TextStyle(
                                         color: Color.fromARGB(255, 0, 0, 0),
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -170,46 +171,119 @@ class _PerhitunganAlternatifScreenState
                                     color: Color.fromARGB(255, 185, 187, 186),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10))),
-                                child: const Center(
+                                child: Center(
                                   child: Text(
-                                    "PUSPA",
-                                    style: TextStyle(
+                                    "${_perhitunganAlternatifModel.alternatifJawaban.data![_perhitunganAlternatifModel.currentIndex].kriteriaKedua}",
+                                    style: const TextStyle(
                                         color: Color.fromARGB(255, 0, 0, 0),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
-                              InkWell(
-                                splashColor: const Color(0xff7474BF),
-                                onTap: () {
-                                  Navigator.pushNamed(context, '');
-                                },
-                                child: Container(
-                                  margin: const EdgeInsets.only(top: 50.0),
-                                  height: 43,
-                                  width:
-                                      MediaQuery.of(context).size.width / 1.2,
-                                  decoration: const BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.black26,
-                                            offset: Offset(0, 28),
-                                            blurRadius: 40,
-                                            spreadRadius: -12)
-                                      ],
-                                      color: Color.fromARGB(255, 39, 199, 124),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: const Center(
-                                    child: Text(
-                                      "Next",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                              _perhitunganAlternatifModel.kumpulkan == false
+                                  ? InkWell(
+                                      splashColor: const Color(0xff7474BF),
+                                      onTap: () {
+                                        if (_perhitunganAlternatifModel
+                                                .alternatifJawaban
+                                                .data![
+                                                    _perhitunganAlternatifModel
+                                                        .currentIndex]
+                                                .bobot !=
+                                            '') {
+                                          _perhitunganAlternatifPresenter
+                                              .jawab(1);
+                                        } else {
+                                          Fluttertoast.showToast(
+                                              msg: 'pilih dulu bobot!',
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              timeInSecForIosWeb: 2,
+                                              backgroundColor: Colors.amber,
+                                              textColor: Colors.white,
+                                              fontSize: 15);
+                                        }
+                                      },
+                                      child: Container(
+                                        margin:
+                                            const EdgeInsets.only(top: 50.0),
+                                        height: 43,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                1.2,
+                                        decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black26,
+                                                  offset: Offset(0, 28),
+                                                  blurRadius: 40,
+                                                  spreadRadius: -12)
+                                            ],
+                                            color: Color.fromARGB(
+                                                255, 39, 122, 199),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: const Center(
+                                          child: Text(
+                                            "Next",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : InkWell(
+                                      splashColor: const Color(0xff7474BF),
+                                      onTap: () {
+                                        if (_perhitunganAlternatifModel
+                                                .alternatifJawaban
+                                                .data![
+                                                    _perhitunganAlternatifModel
+                                                        .currentIndex]
+                                                .bobot !=
+                                            '') {
+                                          _perhitunganAlternatifPresenter
+                                              .submit();
+                                        } else {
+                                          Fluttertoast.showToast(
+                                              msg: 'pilih dulu bobot!',
+                                              toastLength: Toast.LENGTH_SHORT,
+                                              gravity: ToastGravity.BOTTOM,
+                                              backgroundColor: Colors.amber,
+                                              textColor: Colors.white,
+                                              fontSize: 15);
+                                        }
+                                      },
+                                      child: Container(
+                                        margin:
+                                            const EdgeInsets.only(top: 50.0),
+                                        height: 43,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                1.2,
+                                        decoration: const BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black26,
+                                                  offset: Offset(0, 28),
+                                                  blurRadius: 40,
+                                                  spreadRadius: -12)
+                                            ],
+                                            color: Color.fromARGB(
+                                                255, 39, 199, 124),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: const Center(
+                                          child: Text(
+                                            "Submit",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -233,11 +307,26 @@ class _PerhitunganAlternatifScreenState
             bobotResponse: _perhitunganAlternatifModel.bobotResponse,
           ),
         )).then((value) {
-      setState(() {
-        _perhitunganAlternatifModel.jawabanSelected.text =
-            _perhitunganAlternatifModel.bobotResponse.data![value].nama
-                .toString();
-      });
+      if (value != null) {
+        setState(() {
+          _perhitunganAlternatifModel.jawabanSelected.text =
+              _perhitunganAlternatifModel.bobotResponse.data![value].nama
+                  .toString();
+          _perhitunganAlternatifModel.alternatifJawaban
+                  .data![_perhitunganAlternatifModel.currentIndex].bobot =
+              _perhitunganAlternatifModel.bobotResponse.data![value].bobot
+                  .toString();
+          Fluttertoast.showToast(
+              msg: 'jawaban tersimpan',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 2,
+              backgroundColor: const Color.fromARGB(255, 94, 160, 155),
+              textColor: Colors.white,
+              fontSize: 15);
+          _perhitunganAlternatifPresenter.jawab(1);
+        });
+      }
     });
   }
 
@@ -255,6 +344,18 @@ class _PerhitunganAlternatifScreenState
 
   @override
   void onSuccess(String success) {
+    Fluttertoast.showToast(
+        msg: success,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 2,
+        backgroundColor: Colors.amber,
+        textColor: Colors.white,
+        fontSize: 15);
+  }
+
+  @override
+  void onFinish(String success) {
     Fluttertoast.showToast(
         msg: success,
         toastLength: Toast.LENGTH_SHORT,

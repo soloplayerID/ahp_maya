@@ -4,6 +4,7 @@ import '../model/perhitungan_kriteria_model.dart';
 
 abstract class PerhitunganKriteriaState {
   void onSuccess(String success);
+  void onFinish(String success);
   void onError(String error);
   void refreshData(PerhitunganKriteriaModel perhitunganKriteriaModel);
 }

@@ -211,6 +211,14 @@ class _LoginUI extends State<Login> implements LoginState {
                                 splashColor: const Color(0xff7474BF),
                                 onTap: () {
                                   Navigator.pushNamed(context, '/home');
+                                  Fluttertoast.showToast(
+                                      msg: 'berhasil login :D',
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 2,
+                                      backgroundColor: Colors.green,
+                                      textColor: Colors.white,
+                                      fontSize: 15);
                                 },
                                 child: Container(
                                   margin: const EdgeInsets.only(top: 50.0),
