@@ -164,14 +164,7 @@ class _MulaiPerhitunganScreenState extends State<MulaiPerhitunganScreen> {
                       InkWell(
                         splashColor: const Color(0xff7474BF),
                         onTap: () {
-                          Fluttertoast.showToast(
-                              msg: "sedang dikerjakan",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 2,
-                              backgroundColor: Colors.amber,
-                              textColor: Colors.white,
-                              fontSize: 15);
+                          Navigator.pushNamed(context, '/hasil');
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 50.0),

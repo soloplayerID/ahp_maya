@@ -384,7 +384,7 @@ class PerhitunganKriteriaScreenState extends State<PerhitunganKriteriaScreen>
               backgroundColor: const Color.fromARGB(255, 94, 160, 155),
               textColor: Colors.white,
               fontSize: 15);
-          _perhitunganKriteriaPresenter.jawab(1);
+          // _perhitunganKriteriaPresenter.jawab(1);
         });
       }
     });

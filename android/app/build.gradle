@@ -27,7 +27,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion flutter.compileSdkVersion
-    ndkPath = '/Users/abc/Library/Android/sdk/ndk8215888';
+    ndkPath = '/Users/abc/Library/Android/sdk/ndk/25.1.8937393';
     // ndkPath = 'C:/Users/ilham/AppData/Local/Android/Sdk/ndk/24.0.8215888';
     ndkVersion flutter.ndkVersion
 

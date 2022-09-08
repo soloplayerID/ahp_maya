@@ -12,7 +12,7 @@ import '../../../src/model/muridList_model.dart';
 import '../../../src/presenter/add_nilaiAwal_presenter.dart';
 import '../../../src/state/add_nilaiAwal_state.dart';
 import '../loading.dart';
-import '../utils/roundedinputfield.dart';
+import '../utils/roundedinputnumberfield.dart';
 
 class AddNilaiAwalScreen extends StatefulWidget {
   const AddNilaiAwalScreen({Key? key}) : super(key: key);
@@ -94,31 +94,32 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                           height: 30,
                         ),
                         Container(
-                        padding: const EdgeInsets.all(20.0),
-                        child: DropdownSearch<Santri>(
-                          mode: Mode.DIALOG,
-                          showSearchBox: true,
-                          onFind: (text) async {
-                            if (_addNilaiAwalModel.santri.isEmpty) {
-                              return [];
-                            }
-                            return _addNilaiAwalModel.santri;
-                          },
-                          popupItemBuilder: (context, item, isSelected) =>
-                              ListTile(
-                            title: Text(item.nama),
+                          padding: const EdgeInsets.all(20.0),
+                          child: DropdownSearch<Santri>(
+                            mode: Mode.DIALOG,
+                            showSearchBox: true,
+                            onFind: (text) async {
+                              if (_addNilaiAwalModel.santri.isEmpty) {
+                                return [];
+                              }
+                              return _addNilaiAwalModel.santri;
+                            },
+                            popupItemBuilder: (context, item, isSelected) =>
+                                ListTile(
+                              title: Text(item.nama),
+                            ),
+                            onChanged: (value) {
+                              _addNilaiAwalPresenter
+                                  .addNisSiswa(value!.nis.toString());
+                            },
+                            dropdownBuilder: (context, selectedItem) => Text(
+                                selectedItem?.nama ?? "Silahkan Pilih Siswa"),
                           ),
-                          onChanged: (value) {
-                            _addNilaiAwalPresenter.addNisSiswa(value!.nis.toString());
-                          },
-                          dropdownBuilder: (context, selectedItem) => Text(
-                              selectedItem?.nama ?? "Silahkan Pilih Siswa"),
                         ),
-                      ),
-                      const SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
-                        RoundedInputField(
+                        RoundedInputNumberField(
                           hintText: "Penampilan",
                           onValidate: namas,
                           onChanged: (nvalue) async {
@@ -131,7 +132,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                         const SizedBox(
                           height: 15,
                         ),
-                        RoundedInputField(
+                        RoundedInputNumberField(
                           hintText: "sikap",
                           onValidate: ket,
                           onChanged: (nvalue) async {
@@ -144,7 +145,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                         const SizedBox(
                           height: 15,
                         ),
-                        RoundedInputField(
+                        RoundedInputNumberField(
                           hintText: "nilai kehadiran",
                           onValidate: namas,
                           onChanged: (nvalue) async {
@@ -157,7 +158,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                         const SizedBox(
                           height: 15,
                         ),
-                        RoundedInputField(
+                        RoundedInputNumberField(
                           hintText: "Keterampilan",
                           onValidate: namas,
                           onChanged: (nvalue) async {
@@ -170,7 +171,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                         const SizedBox(
                           height: 15,
                         ),
-                        RoundedInputField(
+                        RoundedInputNumberField(
                           hintText: "Interaksi dengan guru",
                           onValidate: namas,
                           onChanged: (nvalue) async {
@@ -183,7 +184,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                         const SizedBox(
                           height: 15,
                         ),
-                        
+
                         const SizedBox(
                           height: 15,
                         ),

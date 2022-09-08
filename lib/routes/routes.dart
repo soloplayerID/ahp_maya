@@ -1,3 +1,4 @@
+import 'package:ahp_maya/screen/hasil.dart';
 import 'package:ahp_maya/screen/home.dart';
 import 'package:ahp_maya/screen/kriteria.dart';
 import 'package:ahp_maya/screen/nilai_awal.dart';
@@ -26,4 +27,5 @@ final routes = {
       const PerhitunganKriteriaScreen(),
   '/perhitunganAlternatif': (BuildContext context) =>
       const PerhitunganAlternatifScreen(),
+  '/hasil': (BuildContext context) => const HasilScreen(),
 };

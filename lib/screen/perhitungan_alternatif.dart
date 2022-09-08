@@ -1,4 +1,5 @@
 import 'package:ahp_maya/screen/fragment/loading.dart';
+import 'package:ahp_maya/src/model/kriteriaList_model.dart';
 import 'package:ahp_maya/src/model/perhitungan_alternatif_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,6 +9,7 @@ import 'package:line_icons/line_icons.dart';
 import '../src/presenter/perhitungan_alternatif_presenter.dart';
 import '../src/state/perhitungan_alternatif_state.dart';
 import 'fragment/perhitungan/selectBobot.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 class PerhitunganAlternatifScreen extends StatefulWidget {
   const PerhitunganAlternatifScreen({Key? key}) : super(key: key);
@@ -32,6 +34,7 @@ class _PerhitunganAlternatifScreenState
     _perhitunganAlternatifPresenter.view = this;
     super.initState();
     _perhitunganAlternatifPresenter.getData();
+    _perhitunganAlternatifPresenter.getDataKriteria();
   }
 
   @override
@@ -84,6 +87,33 @@ class _PerhitunganAlternatifScreenState
                           scrollDirection: Axis.vertical,
                           child: Column(
                             children: [
+                              Container(
+                                padding: const EdgeInsets.all(20.0),
+                                child: DropdownSearch<Kriteria>(
+                                  mode: Mode.DIALOG,
+                                  showSearchBox: true,
+                                  onFind: (text) async {
+                                    if (_perhitunganAlternatifModel
+                                        .kriteria.isEmpty) {
+                                      return [];
+                                    }
+                                    return _perhitunganAlternatifModel.kriteria;
+                                  },
+                                  popupItemBuilder:
+                                      (context, item, isSelected) => ListTile(
+                                    title: Text(item.nama),
+                                  ),
+                                  onChanged: (value) {
+                                    print(value!.idKriteria.toString());
+                                    _perhitunganAlternatifPresenter
+                                        .addKriteriaId(
+                                            value.idKriteria.toString());
+                                  },
+                                  dropdownBuilder: (context, selectedItem) =>
+                                      Text(selectedItem?.nama ??
+                                          "Silahkan Pilih kriteria"),
+                                ),
+                              ),
                               const Center(
                                 child: Text(
                                   "Alternatif Pertama",
@@ -364,6 +394,7 @@ class _PerhitunganAlternatifScreenState
         backgroundColor: Colors.amber,
         textColor: Colors.white,
         fontSize: 15);
+    Navigator.of(context).pop(true);
   }
 
   @override
