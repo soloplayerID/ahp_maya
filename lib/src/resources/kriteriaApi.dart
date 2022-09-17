@@ -10,8 +10,7 @@ class KriteriaServices {
   final Client _client = Client();
   Dio dio = Dio();
 
-  Future<String> updateProfile(
-      String nama, String ket) async {
+  Future<String> updateProfile(String nama, String ket) async {
     try {
       var a = {'nama': nama, 'ket': ket};
       final d = await dio.post(
@@ -31,8 +30,8 @@ class KriteriaServices {
 
   Future<KriteriaResponse> getData() async {
     try {
-      final response = await _client.get(
-          Uri.parse("https://new.tpm-logistics.com/api/ApiTest/getKriterialAll"));
+      final response = await _client.get(Uri.parse(
+          "https://new.tpm-logistics.com/api/ApiTest/getKriterialAll"));
       print(response.body);
       if (response.statusCode == 200) {
         KriteriaResponse kriteriaResponse =

@@ -58,7 +58,7 @@ class _HasilScreenState extends State<HasilScreen> implements HasilState {
                         color: Colors.white, size: 30),
                   ),
                   const Text(
-                    'Pilih perhitungan',
+                    'Hasil perhitungan',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )

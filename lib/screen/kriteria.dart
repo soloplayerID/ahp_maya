@@ -72,13 +72,13 @@ class _KriteriaListScreenState extends State<KriteriaListScreen>
                             child: const Icon(LineIcons.arrowLeft,
                                 color: Colors.white, size: 30),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/addKriteria');
-                            },
-                            child: const Icon(LineIcons.plus,
-                                color: Colors.white, size: 30),
-                          ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     Navigator.pushNamed(context, '/addKriteria');
+                          //   },
+                          //   child: const Icon(LineIcons.plus,
+                          //       color: Colors.white, size: 30),
+                          // ),
                         ],
                       ),
                     ),
@@ -112,8 +112,8 @@ class _KriteriaListScreenState extends State<KriteriaListScreen>
                                                     CircularProgressIndicator()),
                                           )
                                         : ListView.builder(
-                                            itemCount:
-                                                _santriListModel.kriteria.length,
+                                            itemCount: _santriListModel
+                                                .kriteria.length,
                                             scrollDirection: Axis.vertical,
                                             primary: false,
                                             shrinkWrap: true,
@@ -163,7 +163,10 @@ class _KriteriaListScreenState extends State<KriteriaListScreen>
                                                                 .start,
                                                         children: [
                                                           AutoSizeText(
-                                                            _santriListModel.kriteria[itemIndex].nama,
+                                                            _santriListModel
+                                                                .kriteria[
+                                                                    itemIndex]
+                                                                .nama,
                                                             style: GoogleFonts
                                                                 .poppins(
                                                               textStyle: const TextStyle(

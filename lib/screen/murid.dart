@@ -137,7 +137,8 @@ class _MuridListScreenState extends State<MuridListScreen>
                                                               15)),
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: <Widget>[
                                                       Container(
                                                         height: 50,
@@ -180,6 +181,7 @@ class _MuridListScreenState extends State<MuridListScreen>
                                                             const SizedBox(
                                                               height: 4,
                                                             ),
+
                                                             // Row(
                                                             //   mainAxisAlignment:
                                                             //       MainAxisAlignment
@@ -205,6 +207,63 @@ class _MuridListScreenState extends State<MuridListScreen>
                                                             //   ],
                                                             // )
                                                           ],
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 12.0,
+                                                      ),
+                                                      Container(
+                                                        height: 50,
+                                                        width: 50,
+                                                        child: InkWell(
+                                                          onTap: () async {
+                                                            print(_santriListModel
+                                                                .santri[
+                                                                    itemIndex]
+                                                                .nis);
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) =>
+                                                                      AlertDialog(
+                                                                title: const Text(
+                                                                    'kamu yakin?'),
+                                                                content: const Text(
+                                                                    'Delete murid?'),
+                                                                actions: <
+                                                                    Widget>[
+                                                                  FlatButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.of(context)
+                                                                            .pop(false),
+                                                                    child:
+                                                                        const Text(
+                                                                            'No'),
+                                                                  ),
+                                                                  // ignore: deprecated_member_use
+                                                                  FlatButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      _santriListPresenter.deleteMurid(_santriListModel
+                                                                          .santri[
+                                                                              itemIndex]
+                                                                          .nis);
+                                                                      Navigator.of(
+                                                                              context)
+                                                                          .pop(
+                                                                              false);
+                                                                    },
+                                                                    child: const Text(
+                                                                        'Yes'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                          child: const Icon(
+                                                              LineIcons.trash,
+                                                              color: Colors.red,
+                                                              size: 24),
                                                         ),
                                                       ),
                                                     ],

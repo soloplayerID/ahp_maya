@@ -8,7 +8,7 @@ import '../resources/nilaiAwalApi.dart';
 
 abstract class AddNilaiAwalAbstract {
   set view(AddNilaiAwalState view) {}
-  void save(String nama, String ket) {}
+  void save() {}
   void getData() {}
   void addNisSiswa(String nis) {}
 }
@@ -19,16 +19,11 @@ class AddNilaiAwalPresenter implements AddNilaiAwalAbstract {
   final NilaiAwalServices _nilaiAwalServices = NilaiAwalServices();
 
   @override
-  void save(String nama, String ket) {
+  void save() {
     _addNilaiAwalModel.isloading = true;
     _addNilaiAwalState.refreshData(_addNilaiAwalModel);
 
-    Map<String, String> body = <String, String>{
-      "nama": nama,
-      "ket": ket,
-    };
-    print(body);
-    _nilaiAwalServices.updateProfile(nama, ket).then((res) {
+    _nilaiAwalServices.tambahNilai(_addNilaiAwalModel).then((res) {
       _addNilaiAwalState.onSuccess(res.toString());
       print(res.toString());
       _addNilaiAwalModel.isloading = false;
@@ -45,14 +40,18 @@ class AddNilaiAwalPresenter implements AddNilaiAwalAbstract {
     _addNilaiAwalState = view;
     _addNilaiAwalState.refreshData(_addNilaiAwalModel);
   }
-  
+
   @override
   void getData() {
     _addNilaiAwalModel.isloading = true;
     _addNilaiAwalState.refreshData(_addNilaiAwalModel);
     _nilaiAwalServices.getDataMurid().then((value) {
-      for(var element in value.data!) {
-        _addNilaiAwalModel.santri.add(Santri(nis: element.nip.toString(), nama: element.nama.toString(), alamat: element.alamat.toString(), jk: element.jk.toString()));
+      for (var element in value.data!) {
+        _addNilaiAwalModel.santri.add(Santri(
+            nis: element.nip.toString(),
+            nama: element.nama.toString(),
+            alamat: element.alamat.toString(),
+            jk: element.jk.toString()));
       }
       _addNilaiAwalModel.isloading = false;
       _addNilaiAwalState.refreshData(_addNilaiAwalModel);
@@ -62,9 +61,14 @@ class AddNilaiAwalPresenter implements AddNilaiAwalAbstract {
       _addNilaiAwalState.refreshData(_addNilaiAwalModel);
     });
   }
-  
+
   @override
   void addNisSiswa(String nis) {
-    
+    _addNilaiAwalModel.isloading = true;
+    _addNilaiAwalState.refreshData(_addNilaiAwalModel);
+    _addNilaiAwalModel.nip = nis;
+    print('add nis');
+    _addNilaiAwalModel.isloading = false;
+    _addNilaiAwalState.refreshData(_addNilaiAwalModel);
   }
 }

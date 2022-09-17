@@ -32,8 +32,7 @@ class NilaiAwalListPresenter implements NilaiAwalListPresenterAbstract {
             nama: element.nama.toString(),
             keterangan: element.keterangan.toString(),
             nilai: element.nilai.toString(),
-            periode: element.periode.toString()
-            ));
+            periode: element.periode.toString()));
       }
       _nilaiAwalListModels.isloading = false;
       _nilaiAwalListState.refreshData(_nilaiAwalListModels);

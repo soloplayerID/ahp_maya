@@ -151,32 +151,32 @@ class _EditeProfileScreenState extends State<EditeProfileScreen>
                             ),
                           ],
                           onChanged: (gvalue) {
-                              switch (gvalue) {
-                                case 99:
+                            switch (gvalue) {
+                              case 99:
                                 setState(() {
-                                    _selectedGender = 99;
-                                    _editModel.jk = '99';
+                                  _selectedGender = 99;
+                                  _editModel.jk = '99';
                                 });
-                                  break;
-                                  case 1:
-                                  setState(() {
-                                    _editModel.jk = 'L';
-                                    _selectedGender = 1;
-                                  });
-                                  break;
-                                  case 0:
-                                  setState(() {
-                                    _editModel.jk = 'P';
-                                    _selectedGender = 0;
-                                  });
-                                  break;
-                                default:
-                                setState((){
+                                break;
+                              case 1:
+                                setState(() {
                                   _editModel.jk = 'L';
                                   _selectedGender = 1;
                                 });
-                                  break;
-                              }
+                                break;
+                              case 0:
+                                setState(() {
+                                  _editModel.jk = 'P';
+                                  _selectedGender = 0;
+                                });
+                                break;
+                              default:
+                                setState(() {
+                                  _editModel.jk = 'L';
+                                  _selectedGender = 1;
+                                });
+                                break;
+                            }
                           },
                         ),
                         const SizedBox(
@@ -185,11 +185,17 @@ class _EditeProfileScreenState extends State<EditeProfileScreen>
                         InkWell(
                           splashColor: const Color(0xff7474BF),
                           onTap: () {
-                            if (_editModel.nama == "" && _editModel.jk == '99' && _editModel.alamat == "" && _editModel.nis == "") {
-                              Get.snackbar(
-                                  'Error', "nama belum di isi");
+                            if (_editModel.nama == "" &&
+                                _editModel.jk == '99' &&
+                                _editModel.alamat == "" &&
+                                _editModel.nis == "") {
+                              Get.snackbar('Error', "nama belum di isi");
                             } else {
-                              _editPresenter.save(_editModel.nama, _editModel.nis, _editModel.alamat, _editModel.jk);
+                              _editPresenter.save(
+                                  _editModel.nama,
+                                  _editModel.nis,
+                                  _editModel.alamat,
+                                  _editModel.jk);
                             }
                           },
                           child: Container(
@@ -233,7 +239,7 @@ class _EditeProfileScreenState extends State<EditeProfileScreen>
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 2,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 15);
   }

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, file_names
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
@@ -194,8 +194,7 @@ class _AddNilaiAwalScreenState extends State<AddNilaiAwalScreen>
                             if (_addNilaiAwalModel.nama == "") {
                               Get.snackbar('Error', "nama belum di isi");
                             } else {
-                              // _addNilaiAwalPresenter.save(_addNilaiAwalModel.nama,
-                              //     _addNilaiAwalModel.ket);
+                              _addNilaiAwalPresenter.save();
                             }
                           },
                           child: Container(

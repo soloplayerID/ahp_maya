@@ -74,6 +74,415 @@ class _NilaiAwalListScreenState extends State<NilaiAwalListScreen>
                           ),
                           InkWell(
                             onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 100,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: const Icon(
+                                                        LineIcons.check,
+                                                        color: Colors.blue,
+                                                        size: 30),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          '0 - 40',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Buruk',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 100,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: const Icon(
+                                                        LineIcons.check,
+                                                        color: Colors.blue,
+                                                        size: 30),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          '50 - 60',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Cukup Buruk',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 100,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: const Icon(
+                                                        LineIcons.check,
+                                                        color: Colors.blue,
+                                                        size: 30),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          '60 - 70',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Kurang',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 100,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: const Icon(
+                                                        LineIcons.check,
+                                                        color: Colors.blue,
+                                                        size: 30),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          '70 - 80',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Cukup Baik',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 100,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: const Icon(
+                                                        LineIcons.check,
+                                                        color: Colors.blue,
+                                                        size: 30),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 20,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          '80 - 90',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Baik',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ));
+                            },
+                            child: const Icon(LineIcons.info,
+                                color: Colors.white, size: 30),
+                          ),
+                          InkWell(
+                            onTap: () {
                               Navigator.pushNamed(context, '/addNilaiAwal');
                             },
                             child: const Icon(LineIcons.plus,

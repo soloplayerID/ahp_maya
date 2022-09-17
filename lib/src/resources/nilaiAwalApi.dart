@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, avoid_print
 import 'dart:io';
 import 'dart:convert';
+import 'package:ahp_maya/src/model/add_nilaiAwal_model.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' show Client;
 
@@ -11,9 +12,17 @@ class NilaiAwalServices {
   final Client _client = Client();
   Dio dio = Dio();
 
-  Future<String> updateProfile(String nama, String ket) async {
+  Future<String> tambahNilai(AddNilaiAwalModel addNilaiAwalModel) async {
     try {
-      var a = {'nama': nama, 'ket': ket};
+      var a = {
+        'nip': addNilaiAwalModel.nip,
+        'nilai0': addNilaiAwalModel.nama,
+        'nilai1': addNilaiAwalModel.sikap,
+        'nilai2': addNilaiAwalModel.nilaiKehadiran,
+        'nilai3': addNilaiAwalModel.keterampilan,
+        'nilai4': addNilaiAwalModel.interaksiGuru,
+      };
+      print(a);
       final d = await dio.post(
           "https://new.tpm-logistics.com/api/ApiTest/tambahNilai",
           data: FormData.fromMap(a));

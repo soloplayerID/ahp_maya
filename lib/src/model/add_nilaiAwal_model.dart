@@ -3,6 +3,7 @@ import 'muridList_model.dart';
 class AddNilaiAwalModel {
   bool isloading = false;
   bool isSuccess = false;
+  String nip = "";
   String nama = "";
   String penampilan = "";
   String sikap = "";
