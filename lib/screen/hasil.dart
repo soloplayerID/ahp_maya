@@ -10,6 +10,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../src/presenter/hasil_presenter.dart';
 import '../src/state/hasil_state.dart';
+import 'fragment/loading.dart';
 
 // import 'fragment/loading.dart';
 
@@ -34,168 +35,254 @@ class _HasilScreenState extends State<HasilScreen> implements HasilState {
     _hasilPresenter.view = this;
     super.initState();
     _hasilPresenter.getData();
+    _hasilPresenter.getAhp();
+  }
+
+  TableRow _buildTableRow(AhpModel item) {
+    return TableRow(
+        decoration: BoxDecoration(
+          color: Colors.lightBlueAccent,
+        ),
+        children: [
+          TableCell(
+            verticalAlignment: TableCellVerticalAlignment.bottom,
+            child: SizedBox(
+              height: 50,
+              child: Center(
+                child: Text(item.id.toString()),
+              ),
+            ),
+          ),
+          TableCell(
+            verticalAlignment: TableCellVerticalAlignment.middle,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(item.namaHasil),
+            ),
+          ),
+          TableCell(
+            verticalAlignment: TableCellVerticalAlignment.middle,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(item.prioritas.toString()),
+            ),
+          ),
+          TableCell(
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(item.kriteria.toString()),
+            ),
+          ),
+        ]);
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: double.infinity,
-        child: Column(
-          children: [
-            Container(
-              color: const Color(0XFFA0D995),
-              padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-              height: 90,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return _hasilModels.isloading
+        ? const Loading()
+        : Scaffold(
+            body: Container(
+              width: MediaQuery.of(context).size.width,
+              height: double.infinity,
+              child: Column(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop(true);
-                    },
-                    child: const Icon(LineIcons.arrowLeft,
-                        color: Colors.white, size: 30),
+                  Container(
+                    color: const Color(0XFFA0D995),
+                    padding:
+                        const EdgeInsets.only(top: 30, left: 20, right: 20),
+                    height: 90,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop(true);
+                          },
+                          child: const Icon(LineIcons.arrowLeft,
+                              color: Colors.white, size: 30),
+                        ),
+                        const Text(
+                          'Hasil perhitungan',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
                   ),
-                  const Text(
-                    'Hasil perhitungan',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              child: _hasilModels.rank.isEmpty
-                  ? Container(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: Center(
-                        child: Text('Belum Ada data',
-                            style: GoogleFonts.poppins(
-                              fontStyle: FontStyle.italic,
-                              textStyle: const TextStyle(
-                                  fontSize: 14, color: Color(0xff1f1f1f)),
-                            )),
-                      ))
-                  : Expanded(
-                      child: Container(
-                      padding: const EdgeInsets.all(20),
-                      width: MediaQuery.of(context).size.width,
-                      height: double.infinity,
-                      color: const Color(0xffecedf2),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          children: [
-                            const Center(
-                              child: Text(
-                                "Hasil Ranking Metode",
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0)),
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: _hasilModels.isloading
-                                  ? Container(
-                                      child: const Center(
-                                          child: CircularProgressIndicator()),
-                                    )
-                                  : ListView.builder(
-                                      itemCount: _hasilModels.rank.length,
-                                      scrollDirection: Axis.vertical,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemBuilder: (BuildContext context,
-                                              int itemIndex) =>
-                                          Container(
-                                        height: 120,
-                                        margin: const EdgeInsets.symmetric(
-                                            vertical: 5.0),
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                                height: 50,
-                                                width: 50,
-                                                child: Center(
-                                                  child: Text(
-                                                    _hasilModels.rank[itemIndex]
-                                                        .ranking,
-                                                    style: const TextStyle(
-                                                        fontSize: 24),
-                                                  ),
-                                                )),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  AutoSizeText(
-                                                    _hasilModels
-                                                        .rank[itemIndex].nama,
-                                                    style: GoogleFonts.poppins(
-                                                      textStyle:
-                                                          const TextStyle(
-                                                              fontSize: 18,
-                                                              color: Color(
-                                                                  0xff1f1f1f)),
-                                                    ),
-                                                    maxLines: 3,
-                                                  ),
+                  Container(
+                    child: _hasilModels.rank.isEmpty
+                        ? Container(
+                            padding: const EdgeInsets.only(top: 25.0),
+                            child: Center(
+                              child: Text('Belum Ada data',
+                                  style: GoogleFonts.poppins(
+                                    fontStyle: FontStyle.italic,
+                                    textStyle: const TextStyle(
+                                        fontSize: 14, color: Color(0xff1f1f1f)),
+                                  )),
+                            ))
+                        : Expanded(
+                            child: Container(
+                            padding: const EdgeInsets.all(20),
+                            width: MediaQuery.of(context).size.width,
+                            height: double.infinity,
+                            color: const Color(0xffecedf2),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                children: [
+                                  const Center(
+                                    child: Text(
+                                      "Hasil Ranking Metode",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 0, 0, 0)),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: _hasilModels.isloading
+                                        ? Container(
+                                            child: const Center(
+                                                child:
+                                                    CircularProgressIndicator()),
+                                          )
+                                        : ListView.builder(
+                                            itemCount: _hasilModels.rank.length,
+                                            scrollDirection: Axis.vertical,
+                                            primary: false,
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemBuilder: (BuildContext context,
+                                                    int itemIndex) =>
+                                                Container(
+                                              height: 120,
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5.0),
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      child: Center(
+                                                        child: Text(
+                                                          _hasilModels
+                                                              .rank[itemIndex]
+                                                              .ranking,
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 24),
+                                                        ),
+                                                      )),
                                                   const SizedBox(
-                                                    height: 4,
+                                                    width: 20,
                                                   ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Row(
-                                                        children: [
-                                                          Text(
-                                                            'Nilai: ${_hasilModels.rank[itemIndex].nilai}',
-                                                            style: GoogleFonts
-                                                                .poppins(
-                                                              textStyle: const TextStyle(
-                                                                  fontSize: 14,
-                                                                  color: Color(
-                                                                      0xff2b2b2b)),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  )
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        AutoSizeText(
+                                                          _hasilModels
+                                                              .rank[itemIndex]
+                                                              .nama,
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            textStyle:
+                                                                const TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    color: Color(
+                                                                        0xff1f1f1f)),
+                                                          ),
+                                                          maxLines: 3,
+                                                        ),
+                                                        const SizedBox(
+                                                          height: 4,
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  'Nilai: ${_hasilModels.rank[itemIndex].nilai}',
+                                                                  style: GoogleFonts
+                                                                      .poppins(
+                                                                    textStyle: const TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xff2b2b2b)),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
+                                          ),
+                                  ),
+
+                                  //table
+                                  Table(
+                                    // border: TableBorder(
+                                    //     bottom: BorderSide(color: Colors.red, width: 2),
+                                    //     horizontalInside: BorderSide(color: Colors.red, width: 2),
+                                    // ),
+                                    // border: TableBorder.all(color: Colors.red, width: 2),
+                                    border: TableBorder.symmetric(
+                                      inside: const BorderSide(
+                                          color: Colors.blue, width: 2),
+                                      outside: const BorderSide(
+                                          color: Colors.white, width: 5),
                                     ),
+                                    defaultVerticalAlignment:
+                                        TableCellVerticalAlignment.baseline,
+                                    defaultColumnWidth:
+                                        const IntrinsicColumnWidth(),
+                                    columnWidths: const <int, TableColumnWidth>{
+                                      0: FixedColumnWidth(20),
+                                      1: FlexColumnWidth(3),
+                                      2: MaxColumnWidth(FlexColumnWidth(2),
+                                          FractionColumnWidth(0.3)),
+                                      3: FixedColumnWidth(150),
+                                    },
+                                    // textDirection: TextDirection.rtl,
+                                    textBaseline: TextBaseline
+                                        .alphabetic, // Pass this argument when using [TableCellVerticalAlignment.fill]
+                                    children: _hasilModels.ahpModel
+                                        .map((item) => _buildTableRow(item))
+                                        .toList(),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    )),
+                          )),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 
   @override
